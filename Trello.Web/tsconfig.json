@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "noEmit": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "jsx": "react-jsx",
+    "types": [ "node" ],
+    "moduleResolution": "Node"
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}
