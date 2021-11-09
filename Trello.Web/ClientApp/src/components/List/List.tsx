@@ -1,6 +1,8 @@
 ﻿import React from 'react';
 import { CssBaseline, makeStyles, Paper, Typography } from '@material-ui/core'
 import Title from './Title';
+import Card from './Card';
+import InputContainer from '../Input/InputContainer'
 
 const useStyle = makeStyles((theme)=>({
     root: {
@@ -17,7 +19,11 @@ const List = () => {
         <div>
             <Paper className={classes.root}>
                 <CssBaseline />
-                <Title/>
+                <Title />
+                <Card/>
+                <Card/>
+                <Card />
+                <InputContainer/>
             </Paper>
         </div>
     );

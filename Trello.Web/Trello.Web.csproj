@@ -21,11 +21,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\Input\InputCard.tsx" />
+    <None Remove="ClientApp\src\components\Input\InputContainer.tsx" />
     <None Remove="ClientApp\src\components\List.tsx" />
+    <None Remove="ClientApp\src\components\List\Card.tsx" />
     <None Remove="ClientApp\src\components\List\Title.tsx" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\components\Input\InputCard.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\Input\InputContainer.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\List\Card.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\List\List.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\List\Title.tsx" />
   </ItemGroup>
