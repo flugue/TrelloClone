@@ -6,7 +6,7 @@
 
 export interface CardData {
     id: string;
-    content: string;
+    title: string;
 }
 
 export interface Data {
@@ -17,15 +17,15 @@ export interface Data {
 const cards: CardData[] = [
     {
         id: 'card-1',
-        content: 'Learning how to cook',
+        title: 'Learning how to cook',
     },
     {
         id: 'card-2',
-        content: 'Making sandwich',
+        title: 'Making sandwich',
     },
     {
         id: 'card-3',
-        content: 'Taking the trash out',
+        title: 'Taking the trash out',
     },
 ]
 

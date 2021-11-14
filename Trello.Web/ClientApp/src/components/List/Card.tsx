@@ -19,7 +19,7 @@ const Card = ({ card }: Props) => {
     return (
         <>
             <Paper className={classes.card}>
-                {card.content}
+                {card.title}
             </Paper>
         </>
     );

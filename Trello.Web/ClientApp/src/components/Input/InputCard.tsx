@@ -1,7 +1,8 @@
-﻿import { alpha } from '@material-ui/core';
-import { Button, darken, fade, IconButton, InputBase, makeStyles, Paper } from '@material-ui/core';
-import ClearIcon from '@material-ui/icons/Clear'
-import React from 'react';
+﻿import { Button, fade, IconButton, InputBase, makeStyles, Paper } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
+import React, { useState } from 'react';
+import { useContext } from 'react';
+import storeApi from '../../utils/storeApi';
 
 const useStyle = makeStyles((theme) => ({
     card: {
@@ -25,10 +26,28 @@ const useStyle = makeStyles((theme) => ({
 
 type Props = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    listId: string;
 };
 
-const InputCard = ({ setOpen}:Props) => {
+const InputCard = ({ setOpen, listId }: Props) => {
     const classes = useStyle();
+    const store = useContext(storeApi);
+
+    const [cardTitle, setCardTitle] = useState('');
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCardTitle(event.target.value);
+    }
+
+    const handleBtnConfirm = () => {
+        store!.addMoreCard(cardTitle, listId);
+        setCardTitle('');
+        setOpen(false);
+    }
+
+    const handleOnBlur = () => {
+        setCardTitle('');
+        setOpen(false);
+    }
 
     return (
         <div>
@@ -37,12 +56,14 @@ const InputCard = ({ setOpen}:Props) => {
                     <InputBase multiline fullWidth
                         inputProps={{ className: classes.input }}
                         placeholder='Enter a title of this card...'
-                        onBlur={() => setOpen(false)}
+                        onBlur={handleOnBlur}
+                        value={cardTitle}
+                        onChange={handleOnChange}
                     />
                 </Paper>
             </div>
             <div className={classes.confirm}>
-                <Button className={classes.btnConfirm} onClick={() => setOpen(false)}>
+                <Button className={classes.btnConfirm} onClick={handleBtnConfirm}>
                     Add Card
                 </Button>
                 <IconButton onClick={() => setOpen(false)}>

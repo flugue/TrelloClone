@@ -1,9 +1,9 @@
-﻿import React from 'react';
-import { CssBaseline, makeStyles, Paper, Typography } from '@material-ui/core'
-import Title from './Title';
-import Card from './Card';
-import InputContainer from '../Input/InputContainer';
+﻿import { CssBaseline, makeStyles, Paper } from '@material-ui/core';
+import React from 'react';
 import { ListData } from '../../utils/store';
+import InputContainer from '../Input/InputContainer';
+import Card from './Card';
+import Title from './Title';
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -26,8 +26,8 @@ const List = ({ list }: Props) => {
             <Paper className={classes.root}>
                 <CssBaseline />
                 <Title title={list.title} />
-                {list.cards.map(card => (<Card card={card} />))}
-                <InputContainer />
+                {list.cards.map(card => (<Card card={card} key={card.id} />))}
+                <InputContainer listId={list.id} />
             </Paper>
         </div>
     );
