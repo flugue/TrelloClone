@@ -1,5 +1,5 @@
 ﻿import { InputBase, makeStyles, Typography } from '@material-ui/core';
-import  MoreHoriz from '@material-ui/icons/MoreHoriz';
+import MoreHoriz from '@material-ui/icons/MoreHoriz';
 import React, { useState } from 'react';
 
 const useStyle = makeStyles((theme) => ({
@@ -10,7 +10,7 @@ const useStyle = makeStyles((theme) => ({
     editableTitle: {
         flexGrow: 1,
         fontSize: '1.2rem',
-        fontWeight:'bold'
+        fontWeight: 'bold'
     },
     input: {
         fontSize: '1.2rem',
@@ -22,7 +22,11 @@ const useStyle = makeStyles((theme) => ({
     }
 }));
 
-const Title = () => {
+interface Props {
+    title: string;
+}
+
+const Title = ({ title }: Props) => {
     const [open, setOpen] = useState(false);
     const classes = useStyle();
 
@@ -31,7 +35,7 @@ const Title = () => {
             {
                 open ? (
                     <div>
-                        <InputBase value='Todo'
+                        <InputBase value={title}
                             autoFocus
                             inputProps={{ className: classes.input }}
                             fullWidth
@@ -44,7 +48,7 @@ const Title = () => {
                             onClick={() => setOpen(!open)}
                             className={classes.editableTitle}
                         >
-                            Todo
+                            {title}
                         </Typography>
                         <MoreHoriz />
                     </div>

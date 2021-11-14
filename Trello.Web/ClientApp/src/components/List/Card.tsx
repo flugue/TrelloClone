@@ -1,5 +1,6 @@
 ﻿import { makeStyles, Paper } from '@material-ui/core';
 import React from 'react';
+import { CardData } from '../../utils/store';
 
 const useStyle = makeStyles((theme) => ({
     card: {
@@ -8,13 +9,17 @@ const useStyle = makeStyles((theme) => ({
     }
 }));
 
-const Card = () => {
+interface Props {
+    card: CardData;
+}
+
+const Card = ({ card }: Props) => {
     const classes = useStyle();
 
     return (
         <>
             <Paper className={classes.card}>
-                Making youtube video
+                {card.content}
             </Paper>
         </>
     );
