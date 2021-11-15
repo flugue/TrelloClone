@@ -40,4 +40,19 @@ const data: Data = {
     listIds: ['list-1']
 }
 
+export class ListData {
+    id: string = '';
+    title: string = '';
+    cards: CardData[] = [];
+
+    constructor(list?: ListData) {
+        if (list) {
+            this.id = list.id;
+            this.title = list.title;
+            this.cards = list.cards;
+        }
+    }
+}
+
+
 export default data;

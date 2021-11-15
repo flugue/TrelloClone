@@ -2,7 +2,8 @@
 
 
 interface AppContextInterface {
-    addMoreCard: Function;
+    addMoreCard: (title: string, listId: string) => void;
+    addMoreList: (title: string) => void;
 }
 
 export default React.createContext<AppContextInterface | null>(null);
