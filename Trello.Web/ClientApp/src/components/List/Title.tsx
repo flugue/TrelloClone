@@ -1,6 +1,7 @@
 ﻿import { InputBase, makeStyles, Typography } from '@material-ui/core';
 import MoreHoriz from '@material-ui/icons/MoreHoriz';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import storeApi from '../../utils/storeApi';
 
 const useStyle = makeStyles((theme) => ({
     editableTitleContainer: {
@@ -24,22 +25,36 @@ const useStyle = makeStyles((theme) => ({
 
 interface Props {
     title: string;
+    listId: string;
 }
 
-const Title = ({ title }: Props) => {
+const Title = ({ title: titleProps, listId }: Props) => {
     const [open, setOpen] = useState(false);
+    const [title, setTitle] = useState(titleProps);
+    const store = useContext(storeApi);
     const classes = useStyle();
+
+
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(event.target.value);
+    }
+
+    const handleBlur = () => {
+        store!.updateListTitle(title, listId);
+        setOpen(false);
+    }
 
     return (
         <div>
             {
                 open ? (
-                    <div>
+                    <div >
                         <InputBase value={title}
                             autoFocus
                             inputProps={{ className: classes.input }}
                             fullWidth
-                            onBlur={() => setOpen(!open)}
+                            onBlur={handleBlur}
+                            onChange={handleOnChange}
                         />
                     </div >
                 ) : (
@@ -48,7 +63,7 @@ const Title = ({ title }: Props) => {
                             onClick={() => setOpen(!open)}
                             className={classes.editableTitle}
                         >
-                            {title}
+                                {title}
                         </Typography>
                         <MoreHoriz />
                     </div>

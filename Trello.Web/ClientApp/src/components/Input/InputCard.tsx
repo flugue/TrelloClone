@@ -36,6 +36,7 @@ const InputCard = ({ setOpen, listId, type }: Props) => {
     const store = useContext(storeApi);
 
     const [title, setTitle] = useState<string>('');
+
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
     }

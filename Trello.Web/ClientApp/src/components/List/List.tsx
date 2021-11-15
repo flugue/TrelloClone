@@ -25,7 +25,7 @@ const List = ({ list }: Props) => {
         <div>
             <Paper className={classes.root}>
                 <CssBaseline />
-                <Title title={list.title} />
+                <Title title={list.title} listId={list.id} />
                 {list.cards.map(card => (<Card card={card} key={card.id} />))}
                 <InputContainer listId={list.id} type='card'/>
             </Paper>

@@ -56,8 +56,29 @@ function App() {
         setData(newState);
     }
 
+    const updateListTitle = (title: string, listId: string) => {
+        let obj = { ...data };
+        const list = obj.lists.find(l => l.id === listId);
+        list!.title = title;
+
+        const newState = {
+            ...data,
+            lists: obj.lists.map(l => {
+                if (l.id === list?.id)
+                    return list;
+                return l;
+            })
+        };
+
+        setData(newState);
+    }
+
     return (
-        <StoreApi.Provider value={{ addMoreCard: addMoreCard, addMoreList: addMoreList }}>
+        <StoreApi.Provider value={{
+            addMoreCard: addMoreCard,
+            addMoreList: addMoreList,
+            updateListTitle: updateListTitle
+        }}>
             <div className={classes.root}>
                 {data.lists.map(list => {
                     return (<List list={list} key={list.id} />);
