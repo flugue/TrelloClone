@@ -100,8 +100,25 @@ function App() {
                     })
                 };
                 setData(newState);
-
+            } else {
+                const draggingCard = sourceList!.cards.filter(c => c.id === draggableId)[0];
+                sourceList!.cards.splice(source.index, 1);
+                destinationList!.cards.splice(destination.index, 0, draggingCard);
+                const newState = {
+                    ...data,
+                    lists: data.lists.map(l => {
+                        if (l.id === destinationList?.id)
+                            return destinationList;
+                        else if (l.id === sourceList?.id)
+                            return sourceList;
+                        return l;
+                    })
+                };
+                setData(newState);
+                console.log(newState);
             }
+        } else {
+           
         }
 
     }

@@ -33,8 +33,13 @@ const data: Data = {
     lists: [
         {
             id: 'list-1',
-            title: 'Todo',
+            title: 'To Do',
             cards,
+        },
+        {
+            id: 'list-2',
+            title: 'On Going',
+            cards:[],
         }
     ],
     listIds: ['list-1']
